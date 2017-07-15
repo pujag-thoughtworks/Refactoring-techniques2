@@ -11,22 +11,27 @@ public class NumberCruncher {
     }
 
     public int countEven() {
-        return count(number -> number % 2 == 0);
+        IntPredicate evenPredicate = number -> number % 2 == 0;
+        return count(evenPredicate);
     }
 
+
     public int countOdd() {
-        return count(number -> number % 2 == 1);
+        IntPredicate oddPredicate = number -> number % 2 == 1;
+        return count(oddPredicate);
     }
 
     public int countPositive() {
-        return count(number -> number >= 0);
+        IntPredicate positivePredicate = number -> number >= 0;
+        return count(positivePredicate);
     }
 
     public int countNegative() {
-        return count(number -> number < 0);
+        IntPredicate negativePredicate = number -> number < 0;
+        return count(negativePredicate);
     }
 
-    private int count ( IntPredicate intPredicate){
+    private int count(IntPredicate intPredicate) {
         return (int) Arrays.stream(numbers).filter(intPredicate).count();
     }
 
